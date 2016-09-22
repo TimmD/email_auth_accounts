@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
 from accounts.forms import UserRegistrationForm, UserLoginForm
+from django.http import HttpResponseRedirect
 
 
 def register(request, register_form=UserRegistrationForm):
@@ -64,3 +65,6 @@ def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
     return redirect(reverse('index'))
+
+def home(request):
+    return HttpResponseRedirect('../accounts/login')
